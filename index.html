@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Babulka Player</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            margin-top: 50px;
+        }
+        button {
+            font-size: 24px;
+            padding: 15px 30px;
+            margin: 20px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>BABULKA</h1>
+    
+    <button id="playButton">🔊 Запустить BABULKA</button>
+    <a id="muteButton" href="https://t.me/maksimkasigmaantioder" style="display: none;">
+        <button>🔇 Заглушить</button>
+    </a>
+
+    <audio id="player" loop>
+        <source src="babulka.mp3" type="audio/mpeg">
+        Ваш браузер не поддерживает аудиоплеер.
+    </audio>
+
+    <script>
+        document.getElementById("playButton").addEventListener("click", function() {
+            let audio = document.getElementById("player");
+            audio.volume = 1.0;  // Максимальная громкость
+            audio.play().catch(error => console.log("Ошибка воспроизведения:", error));
+
+            // Скрываем кнопку "Запустить"
+            this.style.display = "none";
+
+            // Показываем кнопку "Заглушить"
+            document.getElementById("muteButton").style.display = "inline-block";
+        });
+    </script>
+</body>
+</html>
